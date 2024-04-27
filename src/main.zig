@@ -1,13 +1,9 @@
 const std = @import("std");
 const riscv = @import("arch/riscv.zig");
 
-const instruction_type_r = riscv.InstructionTypeR;
-const register = riscv.Register;
+const Register = riscv.Register;
 
 pub fn main() !void {
-    std.debug.print("0x{x}\n", .{riscv.instructionAdd(
-        register.ra,
-        register.sp,
-        register.gp,
-    )});
+    const inst = riscv.instructionSub(Register.ra, Register.sp, Register.gp);
+    std.debug.print("0x{X}\n", .{inst});
 }
